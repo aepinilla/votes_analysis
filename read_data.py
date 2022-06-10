@@ -1,14 +1,14 @@
 
 import pandas as pd
-from settings import d, senado_files
+from settings import d, senado_files, year, corporacion
 
 
 def read_data():
     senado = []
     for s in senado_files:
-        print('Reading senado ' + str(s))
-        file = d + '/votes_analysis/data/excel/senado/senado%s.xlsx' % (s)
-        data = pd.read_pickle(d + '/votes_analysis/data/pickle/senado/senado%s.pkl' % (s))
+        # print('Leyendo registro de votaciones al Senado')
+        print('Leyendo datos de ' + corporacion + str(year) + '-' + str(s))
+        data = pd.read_pickle(d + '/analisis_votos/data/senado%s/senado%s-%s.pkl' % (year, year, s))
         senado.append(data)
 
     senado_df = pd.concat(senado)
